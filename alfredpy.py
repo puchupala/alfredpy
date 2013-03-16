@@ -59,15 +59,22 @@ class Feedback(object):
     """
     
     items = list()
+    icon = None
+    
+    def add_item(self, uid="", arg="", valid=True, autocomplete="", \
+        title="", subtitle="", icon=self.icon):
+        """docstring for add_item"""
+        self.items.append( Item(uid, arg, valid, autocomplete, title, subtitle, icon) )
     
     def get_items(self):
         """docstring for get_items"""
         return self.items
+    
+    def set_icon(self, icon):
+        self.icon = icon
         
-    def add_item(self, uid="", arg="", valid=True, autocomplete="", \
-        title="", subtitle="", icon=None):
-        """docstring for add_item"""
-        self.items.append( Item(uid, arg, valid, autocomplete, title, subtitle, icon) )
+    def get_icon(self):
+        return self.icon
         
     def to_xml(self, encoding="utf-8"):
         xml = self.FEEDBACK_TEMPLATE % "".join([i.to_xml() for i in self.items])
