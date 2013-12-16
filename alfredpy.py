@@ -62,7 +62,9 @@ class Feedback(object):
     icon = None
     
     def add_item(self, uid="", arg="", valid=True, autocomplete="", \
-        title="", subtitle="", icon=self.icon):
+        title="", subtitle="", icon=None):
+        if icon is None:
+            icon = self.icon
         """docstring for add_item"""
         self.items.append( Item(uid, arg, valid, autocomplete, title, subtitle, icon) )
     
